@@ -1,6 +1,5 @@
 crewai
 langchain
-ollama
 yfinance
 streamlit
 pandas
