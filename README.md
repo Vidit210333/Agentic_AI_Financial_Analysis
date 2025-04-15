@@ -13,28 +13,6 @@ An advanced stock analysis tool powered by AI agents that provides comprehensive
 - Investment strategy recommendations
 - Interactive charts and visualizations
 
-## Installation
-
-1. Clone the repository:
-```bash
-git clone https://github.com/imanoop7/Financial-Analysis--Multi-Agent-Open-Source-LLM
-cd Financial-Analysis--Multi-Agent-Open-Source-LLM
-```
-
-2. Install the required dependencies:
-```bash
-pip install -r requirements.txt
-```
-
-3. Make sure you have Ollama installed and running on your system. Visit [Ollama's website](https://ollama.ai/) for installation instructions.
-
-## Usage
-
-1. Start the application:
-```bash
-streamlit run app.py
-```
-
 2. Enter a stock symbol (e.g., AAPL for Apple Inc.) in the input field.
 
 3. Click "Analyze Stock" to generate a comprehensive analysis report.
@@ -52,16 +30,8 @@ The application will display:
 
 - crewai - For multi-agent orchestration
 - langchain - For LLM interactions
-- ollama - For running local LLMs
+- Gemini - For running API Based LLM
 - yfinance - For fetching stock data
 - streamlit - For the web interface
 - plotly - For interactive charts
 - And other data analysis libraries
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
