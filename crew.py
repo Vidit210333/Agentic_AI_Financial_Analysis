@@ -1,3 +1,14 @@
+# Patch sqlite3 to use newer version via pysqlite3
+import sys
+import importlib
+
+try:
+    import pysqlite3
+    sys.modules["sqlite3"] = importlib.import_module("pysqlite3")
+except ImportError:
+    raise RuntimeError("pysqlite3-binary is not installed. Run `pip install pysqlite3-binary`.")
+
+
 from crewai import Agent, Task, Crew, Process
 from tools.yf_tech_analysis_tool import yf_tech_analysis
 from tools.yf_fundamental_analysis_tool import yf_fundamental_analysis
