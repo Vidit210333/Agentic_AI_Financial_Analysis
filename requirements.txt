@@ -8,6 +8,8 @@ scipy
 numpy
 textblob
 ta
+sudo apt-get update
+sudo apt-get install sqlite3
 
 
 
