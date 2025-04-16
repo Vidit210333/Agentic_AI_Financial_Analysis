@@ -1,3 +1,5 @@
+
+
 import yfinance as yf
 from crewai.tools import tool
 import requests
@@ -20,15 +22,7 @@ def competitor_analysis(ticker: str, num_competitors: int = 5) -> Dict:
                 "sector": str,
                 "industry": str
             },
-            "competitors": [{
-                "ticker": str,
-                "name": str,
-                "market_cap": float,
-                "pe_ratio": float,
-                "revenue_growth": float,
-                "profit_margins": float,
-                "beta": float
-            }]
+            "competitors": [ ... ]
         }
     """
     try:
@@ -37,80 +31,74 @@ def competitor_analysis(ticker: str, num_competitors: int = 5) -> Dict:
         info = stock.info
         sector = info.get('sector')
         industry = info.get('industry')
-        
+        name = info.get('shortName') or info.get('longName', ticker)
+
         if not sector or not industry:
             raise ValueError(f"Could not determine sector/industry for {ticker}")
 
-        # Method 1: Use Yahoo Finance's recommendation API
+        # Try Method 1: Use Yahoo Finance recommendation API
         competitors = set()
         url = f"https://query2.finance.yahoo.com/v6/finance/recommendationsbysymbol/{ticker}"
         response = requests.get(url, headers={'User-Agent': 'Mozilla/5.0'})
-        
+
         if response.status_code == 200:
             data = response.json()
             for rec in data.get('finance', {}).get('result', []):
                 competitors.update(s['symbol'] for s in rec.get('recommendedSymbols', []))
 
-        # Method 2: Fallback to sector ETF holdings if needed
+        # Fallback: Use predefined sector ETFs to find similar companies
         if len(competitors) < num_competitors:
-            sector_etf = {
-                'Technology': 'XLK',
-                'Financial Services': 'XLF',
-                'Healthcare': 'XLV',
-                'Consumer Cyclical': 'XLY',
-                'Communication Services': 'XLC'
-            }.get(sector)
-            
-            if sector_etf:
-                etf = yf.Ticker(sector_etf)
-                holdings = etf.info.get('holdings', {})
-                competitors.update(holdings.keys())
+            sector_etfs = {
+                "Technology": "XLK",
+                "Healthcare": "XLV",
+                "Financial Services": "XLF",
+                "Consumer Cyclical": "XLY",
+                "Energy": "XLE",
+                "Industrials": "XLI",
+                "Utilities": "XLU",
+                "Materials": "XLB",
+                "Real Estate": "XLRE",
+                "Communication Services": "XLC"
+            }
 
-        # Process competitors
+            etf_symbol = sector_etfs.get(sector)
+            if etf_symbol:
+                etf = yf.Ticker(etf_symbol)
+                holdings = etf.info.get('holdings', [])
+                # Yahoo Finance may not always expose ETF holdings via API
+                etf_holdings = etf.history(period="1d").columns.tolist()
+                for sym in etf_holdings:
+                    if sym != ticker:
+                        competitors.add(sym)
+
+        # Limit number of competitors
+        competitors = list(competitors - {ticker})[:num_competitors]
+
         competitor_data = []
-        for comp in list(competitors):
-            if comp == ticker:
-                continue
-                
+        for comp in competitors:
             try:
-                comp_stock = yf.Ticker(comp)
-                comp_info = comp_stock.info
-                
-                # Only include companies in the same industry
-                if comp_info.get('industry') == industry:
-                    competitor_data.append({
-                        "ticker": comp,
-                        "name": comp_info.get('longName', comp),
-                        "market_cap": comp_info.get('marketCap'),
-                        "pe_ratio": comp_info.get('trailingPE'),
-                        "revenue_growth": comp_info.get('revenueGrowth'),
-                        "profit_margins": comp_info.get('profitMargins'),
-                        "beta": comp_info.get('beta')
-                    })
-                    
-                    if len(competitor_data) >= num_competitors:
-                        break
-            except:
-                continue
+                comp_info = yf.Ticker(comp).info
+                competitor_data.append({
+                    "ticker": comp,
+                    "name": comp_info.get('shortName', ''),
+                    "market_cap": comp_info.get('marketCap', 0),
+                    "pe_ratio": comp_info.get('trailingPE', 0),
+                    "revenue_growth": comp_info.get('revenueGrowth', 0),
+                    "profit_margins": comp_info.get('profitMargins', 0),
+                    "beta": comp_info.get('beta', 0)
+                })
+            except Exception:
+                continue  # Skip if any issue occurs
 
         return {
-            "status": "success",
             "main_stock": {
                 "ticker": ticker,
-                "name": info.get('longName'),
+                "name": name,
                 "sector": sector,
                 "industry": industry
             },
-            "competitors": sorted(
-                competitor_data,
-                key=lambda x: x.get('market_cap', 0),
-                reverse=True
-            )[:num_competitors]
+            "competitors": competitor_data
         }
 
     except Exception as e:
-        return {
-            "status": "error",
-            "message": f"Failed to analyze competitors: {str(e)}",
-            "ticker": ticker
-        }
+        return {"error": str(e)}
