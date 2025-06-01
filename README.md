@@ -36,7 +36,7 @@ All agents are orchestrated using a central CrewAI-based management system (crew
 ## StreamLit Application  
 
 
-🔗 [Click here to view the Streamlit App](https://vidit-financial-analysis.streamlit.app)
+🔗 [Click here to view the Streamlit App](https://agenticaifinancialanalysis-btrgxqvr3z4bhpjj2oyuov.streamlit.app/)
 
 1. Enter a stock symbol (e.g., AAPL for Apple Inc.) in the input field.
 2. Click "Analyze Stock" to generate a comprehensive analysis report.
