@@ -50,16 +50,22 @@ The application will display:
 
 Python 3.10+
 
-CrewAI – Agentic AI Framework
-LangChain / LLMs – For reasoning and text generation (We have currently used Gemini 2.0 - flash)
-Pandas / NumPy – Data processing
-Matplotlib / Plotly – Visualizations
-yfinance – Real-time stock data and other key financial values of a stock
-BeautifulSoup / requests – Web scraping for news articles from finnewz
-HuggingFace – Sentiment Analysis
-Streamlit (optional) – Interactive UI (can be added)
+-CrewAI – Agentic AI Framework
+-LangChain / LLMs – For reasoning and text generation (We have currently used Gemini 2.0 - flash)
+-Pandas / NumPy – Data processing
+-Matplotlib / Plotly – Visualizations
+-yfinance – Real-time stock data and other key financial values of a stock
+-BeautifulSoup / requests – Web scraping for news articles from finnewz
+-HuggingFace – Sentiment Analysis
+-Streamlit (optional) – Interactive UI (can be added)
 
 
 ## Setup and run instructions 
 
-
+1. Clone the Repository
+   git clone https://github.com/Vidit210333/Agentic_AI_Financial_Analysis.git
+   cd Agentic_AI_Financial_Analysis
+2. Create Virtual Environment
+   python -m venv venv
+3. pip install -r requirements.txt
+4. python app.py
