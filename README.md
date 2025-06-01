@@ -63,9 +63,11 @@ Python 3.10+
 ## Setup and run instructions 
 
 1. Clone the Repository
-   git clone https://github.com/Vidit210333/Agentic_AI_Financial_Analysis.git
-   cd Agentic_AI_Financial_Analysis
+   - git clone https://github.com/Vidit210333/Agentic_AI_Financial_Analysis.git
+   - cd Agentic_AI_Financial_Analysis
 2. Create Virtual Environment
-   python -m venv venv
-3. pip install -r requirements.txt
-4. python app.py
+   - python -m venv venv
+3. Install libraries
+   - pip install -r requirements.txt
+4. Run Streamlit app
+   python app.py
