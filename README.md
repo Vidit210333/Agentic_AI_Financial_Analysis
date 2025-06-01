@@ -63,9 +63,8 @@ Python 3.10+
 
 ## Setup and run instructions 
 
-### 1. Clone the Repository
-
 ```bash
+# Clone Repository 
 git clone https://github.com/Vidit210333/Agentic_AI_Financial_Analysis.git
 cd Agentic_AI_Financial_Analysis
 
@@ -76,7 +75,7 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 # install dependencies
 pip install -r requirements.txt
 
-# set the gemini API
+# set the Gemini API we have currently used Gemini 2.0 flash 
 
 # run app
 python app.py
