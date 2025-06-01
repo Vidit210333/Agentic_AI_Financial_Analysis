@@ -69,9 +69,14 @@ Python 3.10+
 git clone https://github.com/Vidit210333/Agentic_AI_Financial_Analysis.git
 cd Agentic_AI_Financial_Analysis
 
-### 2. Create a Virtual Environment
-
-''' bash
+# Create a Virtual Environment
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 
+# install dependencies
+pip install -r requirements.txt
+
+# set the gemini API
+
+# run app
+python app.py
