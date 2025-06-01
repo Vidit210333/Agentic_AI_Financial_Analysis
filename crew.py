@@ -41,34 +41,7 @@ class GeminiLLM:
             print(f"Gemini LLM error: {str(e)}")
             return "LLM unavailable"
         
-# class OllamaStreamingLLM:
-#     def __init__(self):
-#         self.model = "ollama/llama3"  # Must include "ollama/" prefix
-#         self.api_base = "http://localhost:11434"
-        
-#     def __call__(self, prompt: str) -> str:
-#         try:
-#             full_response = ""
-#             response = completion(
-#                 model=self.model,
-#                 messages=[{"content": prompt, "role": "user"}],
-#                 api_base=self.api_base,
-#                 stream=True
-#             )
-            
-#             for chunk in response:
-#                 if 'content' in chunk.choices[0].delta:
-#                     full_response += chunk.choices[0].delta.content
-            
-#             return full_response
-            
-#         except Exception as e:
-#             print(f"Ollama error: {str(e)}")
-#             return "LLM unavailable" 
-    
 def create_crew(stock_symbol):
-    # Initialize Ollama LLM
-    # llm = OllamaStreamingLLM()  # Make sure you have the llama2 model installed in Ollama
     llm = GeminiLLM()
 
     # Define Agents
@@ -155,10 +128,7 @@ def create_crew(stock_symbol):
     return crew
 
 def run_analysis(stock_symbol):
-    # Initialize Ollama LLM
     llm = GeminiLLM()
-    
-    # Initialize a dictionary to store individual agent outputs
     agent_outputs = {}
     
     # 1. Researcher Task
@@ -293,13 +263,11 @@ def run_analysis(stock_symbol):
     agent_outputs['Investment Strategist'] = strategy_result
     print("Task 4 completed by Investment Strategist")
     
-    # Full sequential analysis
-    print("\n======= Running Full Analysis =======")
-    crew = create_crew(stock_symbol)
-    final_result = crew.kickoff()
+    # # Full sequential analysis
+    # print("\n======= Running Full Analysis =======")
+    # crew = create_crew(stock_symbol)
+    # final_result = crew.kickoff()
     
     return {
-        "individual_analyses": agent_outputs , 
-
-        "Overall Results" : final_result 
+        "individual_analyses": agent_outputs 
     }
