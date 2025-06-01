@@ -61,6 +61,5 @@ Python 3.10+
 
 
 ## Setup and run instructions 
-
-<pre lang="markdown"> ```bash # Clone the Repository git clone https://github.com/Vidit210333/Agentic_AI_Financial_Analysis.git cd Agentic_AI_Financial_Analysis # Create Virtual Environment python -m venv venv source venv/bin/activate # On Windows, use `venv\Scripts\activate` # Install libraries pip install -r requirements.txt # Run Streamlit app python app.py ``` </pre>
+<pre> ```bash # Clone the Repository git clone https://github.com/Vidit210333/Agentic_AI_Financial_Analysis.git cd Agentic_AI_Financial_Analysis # Create Virtual Environment python -m venv venv source venv/bin/activate # On Windows, use `venv\Scripts\activate` # Install libraries pip install -r requirements.txt # Run Streamlit app python app.py ``` </pre>
 
