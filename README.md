@@ -62,9 +62,16 @@ Python 3.10+
 
 
 ## Setup and run instructions 
+
 ### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/Vidit210333/Agentic_AI_Financial_Analysis.git
 cd Agentic_AI_Financial_Analysis
+
+### 2. Create a Virtual Environment
+
+''' bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
 
