@@ -6,7 +6,7 @@ An advanced stock analysis tool powered by AI agents that provides comprehensive
 
 In the complex and volatile world of financial markets, making informed investment decisions requires analyzing vast and diverse information: stock trends, company fundamentals, news sentiment, and industry comparisons. Traditional approaches often rely on fragmented tools and manual effort, making it difficult to generate a holistic view.
 
-Agentic AI Financial Analysis solves this by leveraging multiple autonomous AI agents to collaboratively analyze financial data, generate insights, assess risks, and recommend investment strategies — all in a structured and automated pipeline.
+Agentic AI Financial Analysis solves this by leveraging multiple autonomous AI agents to collaboratively analyze financial data, generate insights, assess risks, and recommend investment strategies  all in a structured and automated pipeline.
 
 ## Agent Interactions 
 
