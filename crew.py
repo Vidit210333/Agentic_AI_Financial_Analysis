@@ -293,11 +293,13 @@ def run_analysis(stock_symbol):
     agent_outputs['Investment Strategist'] = strategy_result
     print("Task 4 completed by Investment Strategist")
     
-    # # Full sequential analysis
-    # print("\n======= Running Full Analysis =======")
-    # crew = create_crew(stock_symbol)
-    # final_result = crew.kickoff()
+    # Full sequential analysis
+    print("\n======= Running Full Analysis =======")
+    crew = create_crew(stock_symbol)
+    final_result = crew.kickoff()
     
     return {
-        "individual_analyses": agent_outputs
+        "individual_analyses": agent_outputs , 
+
+        "Overall Results" : final_result 
     }
