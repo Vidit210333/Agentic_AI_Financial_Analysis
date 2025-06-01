@@ -33,9 +33,10 @@ All agents are orchestrated using a central CrewAI-based management system (crew
 - Investment strategy recommendations
 - Interactive charts and visualizations
 
-2. Enter a stock symbol (e.g., AAPL for Apple Inc.) in the input field.
+## StreamLit Application 
 
-3. Click "Analyze Stock" to generate a comprehensive analysis report.
+1. Enter a stock symbol (e.g., AAPL for Apple Inc.) in the input field.
+2. Click "Analyze Stock" to generate a comprehensive analysis report.
 
 The application will display:
 - Technical analysis insights
@@ -50,16 +51,20 @@ The application will display:
 
 Python 3.10+
 
--CrewAI – Agentic AI Framework
--LangChain / LLMs – For reasoning and text generation (We have currently used Gemini 2.0 - flash)
--Pandas / NumPy – Data processing
--Matplotlib / Plotly – Visualizations
--yfinance – Real-time stock data and other key financial values of a stock
--BeautifulSoup / requests – Web scraping for news articles from finnewz
--HuggingFace – Sentiment Analysis
--Streamlit (optional) – Interactive UI (can be added)
+- CrewAI – Agentic AI Framework
+- LangChain / LLMs – For reasoning and text generation (We have currently used Gemini 2.0 - flash)
+- Pandas / NumPy – Data processing
+- Matplotlib / Plotly – Visualizations
+- yfinance – Real-time stock data and other key financial values of a stock
+- BeautifulSoup / requests – Web scraping for news articles from finnewz
+- HuggingFace – Sentiment Analysis
+- Streamlit (optional) – Interactive UI (can be added)
 
 
 ## Setup and run instructions 
-<pre> ```bash # Clone the Repository git clone https://github.com/Vidit210333/Agentic_AI_Financial_Analysis.git cd Agentic_AI_Financial_Analysis # Create Virtual Environment python -m venv venv source venv/bin/activate # On Windows, use `venv\Scripts\activate` # Install libraries pip install -r requirements.txt # Run Streamlit app python app.py ``` </pre>
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/Vidit210333/Agentic_AI_Financial_Analysis.git
+cd Agentic_AI_Financial_Analysis
 
